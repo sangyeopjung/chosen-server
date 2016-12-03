@@ -6,9 +6,6 @@ var User = require('./models/user');
 var config = require('./config');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 exports.facebook = passport.use(new FacebookStrategy({
 		clientID: config.facebook.clientID,
 		clientSecret: config.facebook.clientSecret,

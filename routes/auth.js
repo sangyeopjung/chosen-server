@@ -7,8 +7,7 @@ var passport = require('passport');
 var User = require('../models/user');
 var Verify = require('./verify');
 
-router.get('/facebook', passport.authenticate('facebook'),
-	function(req, res){});
+router.get('/facebook', passport.authenticate('facebook'), function(req, res){});
 
 router.get('/facebook/callback', function(req,res,next){
 	passport.authenticate('facebook', function(err, user, info) {
@@ -36,11 +35,24 @@ router.get('/facebook/callback', function(req,res,next){
 	})(req,res,next);
 });
 
+router.get('/check', Verify.verifyOrdinaryUser, function(req,res,next){
+	User.findById(req.decoded._id, function(err, user){
+		if(err){
+			return next(err);
+		}
+		else {
+			res.status(200).json({
+				status: 'You are logged in!'
+			});
+		}
+	});
+});
+
 router.get('/logout', function(req, res) {
 	req.logout();
 	res.status(200).json({
 		status: 'Bye!'
 	});
-});
+})
 
 module.exports = router;
