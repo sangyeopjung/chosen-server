@@ -24,7 +24,14 @@ router.get('/facebook/callback', function(req,res,next){
 		res.status(200).json({
 			status: 'Login successful!',
 			success: true,
-			token: token
+			user: {
+				token: token,
+				id: user.id,
+				name: user.name,
+				gender: user.gender,
+				admin: user.admin,
+				picture: user.picture[0]
+			}
 		});
 	})(req,res,next);
 });
