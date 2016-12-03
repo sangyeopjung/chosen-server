@@ -35,7 +35,7 @@ Running npm install will install all following dependencies:
 
 ### /
 
-Index page
+Landing page
 
 ## API
 
@@ -51,17 +51,23 @@ status: 'Login successful!',
 success: true,
 user: {
     token: String,
-    id: String,
-    name: String,
-    gender: String,
+    id: String, //numbers only
+    name: String, //as displayed in FB profile
+    gender: String, //'male' or 'female'; custom genders left blank
     admin: Boolean,
-    picture: String
+    picture: String //Photo URL
 }
 ```
 
 ### /auth/logout
 
 Logs out user
+
+```
+{
+    status: 'Bye!'
+}
+```
 
 ## Database
 
@@ -90,6 +96,6 @@ To access DB using shell, run:
 ```
 $ mongo
 $ use chosen
-$ db.users.find().pretty();
+$ db.users.find().pretty(); //SELECT * FROM users;
 ```
 
