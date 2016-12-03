@@ -47,17 +47,15 @@ Will be redirected to /auth/facebook/callback
 
 #### JSON
 ```
-{
-    token: String,  //unique token
-    id: String, //facebook ID
-    name: String,   //facebook profile name
+status: 'Login successful!',
+success: true,
+user: {
+    token: String,
+    id: String,
+    name: String,
     gender: String,
-    admin:   {
-        type: Boolean,
-        default: false
-    },
-    picture: [String] //facebook profile photo URL. 
-        //Current photo will be stored in picture[0]
+    admin: Boolean,
+    picture: String
 }
 ```
 
